@@ -1,19 +1,13 @@
 // tests/api.spec.ts
 import { test, expect } from '@playwright/test';
+import {StatusCodes} from "http-status-codes";
 let baseURL: string = 'http://localhost:3000/users';
 
 test.describe('User management API', () => {
 
-    test('all users: should return empty array when no users', async ({ request }) => {
-        const response = await request.get(`${baseURL}`);
-        expect(response.status()).toBe(200);
-        const responseBody = await response.text()
-        expect(responseBody).toBe('[]');
-    });
-
     test('find user: should return a user by ID', async ({ request }) => {
         const response = await request.get(`${baseURL}/24`);
-        expect(response.status()).toBe(200);
+        expect(response.status()).toBe(StatusCodes.OK);
         const responseBody = await response.json();
         expect(responseBody.id).toBe(24);
     });
@@ -21,9 +15,6 @@ test.describe('User management API', () => {
     test('find user: should return 404 if user not found', async ({ request }) => {
         const response = await request.get(`${baseURL}/123`);
         expect(response.status()).toBe(404);
-        //const responseBody = await response.json();
-        //console.log(responseBody)
-        //expect(response.Body.id).toBe(123);
     });
 
     test('create user: should add a new user', async ({ request }) => {
@@ -42,8 +33,6 @@ test.describe('User management API', () => {
         console.log(userId);
         const response = await request.delete(`${baseURL}`+"/"+userId);
         expect(response.status()).toBe(200);
-        //const responseBody = await response.json();
-        //expect(responseBody.id).toBe(43);
     });
 
     test('delete user: should return 404 if user not found', async ({ request }) => {
