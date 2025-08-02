@@ -41,3 +41,43 @@ let numbArray: number[] = [1,2,3];
 for (let i = numbArray.length; i > 0 ;i--) {
     console.log(`Element at index ${i-1}: ${numbArray[i-1]}`);
 }
+//1
+let numMaxArray: number[] = [1,3,5];
+let maxNumber = 0;
+for (let i = 0; i < numMaxArray.length;i++) {
+    if (numMaxArray[i] > maxNumber) {
+        maxNumber = numMaxArray[i];
+    }
+}
+console.log(maxNumber);
+//2
+let numMinArray: number[] = [1,3,5];
+let minNumber = 0;
+for (let i = 0; i < numMinArray.length;i++) {
+    if (i == 0)
+    {
+        minNumber = numMinArray[i];
+    }
+    if (numMinArray[i] < minNumber) {
+        minNumber = numMinArray[i];
+    }
+}
+console.log(minNumber);
+//3
+let numArraysLoops: number[] = [0,1,4,5];
+let counter: number = 0;
+for (let i = 0; i < numArraysLoops.length;i++) {
+    if (numArraysLoops[i] % 2 === 0) {
+         counter++;
+    }
+}
+console.log(counter);
+//4
+let arrayOfPositiveNum: number[] = [];
+let numArray: number[] = [0,2,-3,4,-5];
+for (let i = 0; i < numArray.length;i++) {
+    if (numArray[i] >= 0) {
+        arrayOfPositiveNum.push(numArray[i]);
+    }
+}
+console.log(arrayOfPositiveNum);
